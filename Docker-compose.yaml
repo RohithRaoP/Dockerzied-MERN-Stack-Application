@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: backend_b
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_f
+    ports:
+      - "3000:3000"
+
+  mongo:
+    image: mongo
+    container_name: mongo_db
+
+  nginx:
+    build: ./nginx
+    container_name: nginx_n
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
