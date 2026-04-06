@@ -3,7 +3,7 @@ FROM node:18
 WORKDIR /app
 
 COPY package.json .
-RUN npm install --legacy-peer-deps
+RUN npm install 
 
 COPY . .
 
@@ -11,4 +11,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CDM ["npx", "serve", "-s", "build", "-1", "3000"]
+CMD ["npx", "serve", "-s", "build", "-1", "3000"]
