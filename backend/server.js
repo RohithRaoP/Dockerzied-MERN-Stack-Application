@@ -5,6 +5,9 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("Backend API is running and connected to Docker!");
+});
 
 // MongoDB connection
 mongoose.connect("mongodb://mongo:27017/mydb")
