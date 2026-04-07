@@ -31,25 +31,26 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "40px", fontFamily: "sans-serif" }}>
-      <h1>Docker MERN App 🚀</h1>
-      
+    <div className="container">
+    <h1>🚀 MERN Task Manager</h1>
+    <div className="input-group">
       <input 
-        value={name} 
-        onChange={(e) => setName(e.target.value)} 
-        placeholder="Enter item name"
-        style={{ padding: "10px", marginRight: "10px" }}
+        type="text" 
+        value={newItem} 
+        onChange={(e) => setNewItem(e.target.value)} 
+        placeholder="Enter task name..."
       />
-      <button onClick={addItem} style={{ padding: "10px 20px" }}>Add Item</button>
-
-      <h3>Items from MongoDB:</h3>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>{item.name}</li>
-        ))}
-      </ul>
+      <button onClick={addItem}>Add Task</button>
     </div>
-  );
-}
+    
+    <h2>Stored Tasks</h2>
+    <ul>
+      {items.map((item, index) => (
+        <li key={index} className="task-item">{item.name}</li>
+      ))}
+    </ul>
+  </div>
+);
+
 
 export default App;
